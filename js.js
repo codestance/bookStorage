@@ -13,11 +13,26 @@ function bookSearch(){
                     let ans = JSON.parse(req.response);
                     totalItems = ans.totalItems;
                     items = ans.items;
-                    console.log(req.response)
-                    console.log(totalItems)
-                    console.log(items);                    
+                    for(i=0;i<items.length; i++){
+                        title = items[i].volumeInfo.title;
+                        authors = items[i].volumeInfo.authors;
+                        description = items[i].volumeInfo.description;
+                        img = items[i].volumeInfo.imageLinks.thumbnail;
+                        let div = document.createElement('div');
+                        div.className = 'item'
+                        let titleHeader = document.createElement('h4');
+                        let authorsHeader = document.createElement('h5');
+                        let imgDisp = document.createElement('img');
+                        let descParagraph = document.createElement('p');
+                        titleHeader.innerHTML=title;
+                        authorsHeader.innerHTML = authors;
+                        imgDisp.src =img;
+                        imgDisp.alt = title;
+                        descParagraph.innerHTML = description;
+                        div.append(titleHeader,authorsHeader,imgDisp, descParagraph);
+                        viewer.appendChild(div);
+                    }                   
                 }
-
             }
         }
         req.send();
