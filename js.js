@@ -20,6 +20,9 @@ function searchBook(){
                             authors = items[i].volumeInfo.authors;
                             description = items[i].volumeInfo.description;
                             img = items[i].volumeInfo.imageLinks.thumbnail;
+                            if(description==null){
+                                description="Brak opisu"
+                            }
                             let div = document.createElement('div');
                             div.className = 'item';
                             let titleHeader = document.createElement('h4');
