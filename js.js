@@ -6,6 +6,9 @@ function searchBook(){
     }else{
         function getBook(index) {
             let viewer = document.getElementById('viewer');
+            while(viewer.firstChild){
+                viewer.removeChild(viewer.firstChild);
+            }
             let req = new XMLHttpRequest();
             req.open('GET','https://www.googleapis.com/books/v1/volumes?q='+bookTitle+'&startIndex='+index);
             req.onreadystatechange = function(){
@@ -21,7 +24,7 @@ function searchBook(){
                             description = items[i].volumeInfo.description;
                             img = items[i].volumeInfo.imageLinks.thumbnail;
                             if(description==null){
-                                description="Brak opisu"
+                                description="No description provided";
                             }
                             let div = document.createElement('div');
                             div.className = 'item';
@@ -56,3 +59,4 @@ function searchBook(){
     }
 }
 document.getElementById('input').addEventListener('change',searchBook);
+document.getElementById('button').addEventListener('click', searchBook);

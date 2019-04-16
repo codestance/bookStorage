@@ -15,8 +15,15 @@ html,body{
 }
 #input{
     display: inline-block;
+    padding-right: 2rem;
     width: 15rem;
     height:2rem;
+}
+#button{
+    display: inline-block;
+    margin-left: -2rem;
+    color: rgb(204, 204, 204);
+    cursor: pointer;
 }
 #viewer{
     padding: 2rem;
